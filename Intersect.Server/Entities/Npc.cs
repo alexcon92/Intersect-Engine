@@ -181,15 +181,8 @@ namespace Intersect.Server.Entities
 
         protected override bool ShouldDropItem(Entity killer, ItemBase itemDescriptor, Item item, float dropRateModifier, out Guid lootOwner)
         {
-            if(killer?.GetEntityType() == EntityTypes.Player)
-            {
-                lootOwner = (killer as Player)?.Id ?? Id;
-                return base.ShouldDropItem(killer, itemDescriptor, item, dropRateModifier, out _);
-            }
-
-            lootOwner = default;
-
-            return false;
+            lootOwner = (killer as Player)?.Id ?? Id;
+            return base.ShouldDropItem(killer, itemDescriptor, item, dropRateModifier, out _);
         }
 
         public bool TargetHasStealth(Entity target)
