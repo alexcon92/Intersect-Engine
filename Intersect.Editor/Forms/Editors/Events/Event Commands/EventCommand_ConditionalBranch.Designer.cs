@@ -149,6 +149,12 @@ namespace Intersect.Editor.Forms.Editors.Events.Event_Commands
             this.cmbNpcs = new DarkUI.Controls.DarkComboBox();
             this.lblNpc = new System.Windows.Forms.Label();
             this.chkNpc = new DarkUI.Controls.DarkCheckBox();
+            this.grpVitalIs = new DarkUI.Controls.DarkGroupBox();
+            this.darkNumericUpDown1 = new DarkUI.Controls.DarkNumericUpDown();
+            this.cmbVital = new DarkUI.Controls.DarkComboBox();
+            this.lblVitalName = new System.Windows.Forms.Label();
+            this.cmbComparisonOperator = new DarkUI.Controls.DarkComboBox();
+            this.lblVitalComparisonOperator = new System.Windows.Forms.Label();
             this.grpConditional.SuspendLayout();
             this.grpInventoryConditions.SuspendLayout();
             this.grpVariableAmount.SuspendLayout();
@@ -178,6 +184,8 @@ namespace Intersect.Editor.Forms.Editors.Events.Event_Commands
             this.grpEquippedItem.SuspendLayout();
             this.grpCheckEquippedSlot.SuspendLayout();
             this.grpNpc.SuspendLayout();
+            this.grpVitalIs.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.darkNumericUpDown1)).BeginInit();
             this.SuspendLayout();
             // 
             // grpConditional
@@ -1080,7 +1088,8 @@ namespace Intersect.Editor.Forms.Editors.Events.Event_Commands
             "Item Equipped Is...",
             "Has X free Inventory slots...",
             "In Guild With At Least Rank...",
-            "Check Equipped Slot..."});
+            "Check Equipped Slot...",
+            "Vital is..."});
             this.cmbConditionType.Location = new System.Drawing.Point(88, 13);
             this.cmbConditionType.Name = "cmbConditionType";
             this.cmbConditionType.Size = new System.Drawing.Size(183, 21);
@@ -1918,6 +1927,101 @@ namespace Intersect.Editor.Forms.Editors.Events.Event_Commands
             this.chkNpc.TabIndex = 60;
             this.chkNpc.Text = "Specify NPC?";
             this.chkNpc.CheckedChanged += new System.EventHandler(this.chkNpc_CheckedChanged);
+            // grpVitalIs
+            // 
+            this.grpVitalIs.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.grpVitalIs.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(90)))), ((int)(((byte)(90)))));
+            this.grpVitalIs.Controls.Add(this.darkNumericUpDown1);
+            this.grpVitalIs.Controls.Add(this.cmbVital);
+            this.grpVitalIs.Controls.Add(this.lblVitalName);
+            this.grpVitalIs.Controls.Add(this.cmbComparisonOperator);
+            this.grpVitalIs.Controls.Add(this.lblVitalComparisonOperator);
+            this.grpVitalIs.ForeColor = System.Drawing.Color.Gainsboro;
+            this.grpVitalIs.Location = new System.Drawing.Point(9, 40);
+            this.grpVitalIs.Name = "grpVitalIs";
+            this.grpVitalIs.Size = new System.Drawing.Size(262, 140);
+            this.grpVitalIs.TabIndex = 57;
+            this.grpVitalIs.TabStop = false;
+            this.grpVitalIs.Text = "Vital is...";
+            // 
+            // darkNumericUpDown1
+            // 
+            this.darkNumericUpDown1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(73)))), ((int)(((byte)(74)))));
+            this.darkNumericUpDown1.ForeColor = System.Drawing.Color.Gainsboro;
+            this.darkNumericUpDown1.Location = new System.Drawing.Point(79, 87);
+            this.darkNumericUpDown1.Maximum = new decimal(new int[] {
+            100000,
+            0,
+            0,
+            0});
+            this.darkNumericUpDown1.Name = "darkNumericUpDown1";
+            this.darkNumericUpDown1.Size = new System.Drawing.Size(178, 20);
+            this.darkNumericUpDown1.TabIndex = 8;
+            this.darkNumericUpDown1.Value = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            // 
+            // cmbVital
+            // 
+            this.cmbVital.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(73)))), ((int)(((byte)(74)))));
+            this.cmbVital.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(90)))), ((int)(((byte)(90)))));
+            this.cmbVital.BorderStyle = System.Windows.Forms.ButtonBorderStyle.Solid;
+            this.cmbVital.ButtonColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(43)))), ((int)(((byte)(43)))));
+            this.cmbVital.DrawDropdownHoverOutline = false;
+            this.cmbVital.DrawFocusRectangle = false;
+            this.cmbVital.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cmbVital.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbVital.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cmbVital.ForeColor = System.Drawing.Color.Gainsboro;
+            this.cmbVital.FormattingEnabled = true;
+            this.cmbVital.Items.AddRange(new object[] {
+            "HP",
+            "MP"});
+            this.cmbVital.Location = new System.Drawing.Point(79, 53);
+            this.cmbVital.Name = "cmbVital";
+            this.cmbVital.Size = new System.Drawing.Size(177, 21);
+            this.cmbVital.TabIndex = 3;
+            this.cmbVital.Text = null;
+            this.cmbVital.TextPadding = new System.Windows.Forms.Padding(2);
+            // 
+            // lblVitalName
+            // 
+            this.lblVitalName.AutoSize = true;
+            this.lblVitalName.Location = new System.Drawing.Point(7, 25);
+            this.lblVitalName.Name = "lblVitalName";
+            this.lblVitalName.Size = new System.Drawing.Size(30, 13);
+            this.lblVitalName.TabIndex = 6;
+            this.lblVitalName.Text = "Vital:";
+            // 
+            // cmbComparisonOperator
+            // 
+            this.cmbComparisonOperator.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(73)))), ((int)(((byte)(74)))));
+            this.cmbComparisonOperator.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(90)))), ((int)(((byte)(90)))));
+            this.cmbComparisonOperator.BorderStyle = System.Windows.Forms.ButtonBorderStyle.Solid;
+            this.cmbComparisonOperator.ButtonColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(43)))), ((int)(((byte)(43)))));
+            this.cmbComparisonOperator.DrawDropdownHoverOutline = false;
+            this.cmbComparisonOperator.DrawFocusRectangle = false;
+            this.cmbComparisonOperator.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
+            this.cmbComparisonOperator.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbComparisonOperator.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cmbComparisonOperator.ForeColor = System.Drawing.Color.Gainsboro;
+            this.cmbComparisonOperator.Location = new System.Drawing.Point(0, 0);
+            this.cmbComparisonOperator.Name = "cmbComparisonOperator";
+            this.cmbComparisonOperator.Size = new System.Drawing.Size(121, 21);
+            this.cmbComparisonOperator.TabIndex = 9;
+            this.cmbComparisonOperator.Text = null;
+            this.cmbComparisonOperator.TextPadding = new System.Windows.Forms.Padding(2);
+            // 
+            // lblVitalComparisonOperator
+            // 
+            this.lblVitalComparisonOperator.AutoSize = true;
+            this.lblVitalComparisonOperator.Location = new System.Drawing.Point(7, 55);
+            this.lblVitalComparisonOperator.Name = "lblVitalComparisonOperator";
+            this.lblVitalComparisonOperator.Size = new System.Drawing.Size(64, 13);
+            this.lblVitalComparisonOperator.TabIndex = 2;
+            this.lblVitalComparisonOperator.Text = "Comparator:";
             // 
             // EventCommandConditionalBranch
             // 
@@ -1981,6 +2085,9 @@ namespace Intersect.Editor.Forms.Editors.Events.Event_Commands
             this.grpCheckEquippedSlot.PerformLayout();
             this.grpNpc.ResumeLayout(false);
             this.grpNpc.PerformLayout();
+            this.grpVitalIs.ResumeLayout(false);
+            this.grpVitalIs.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.darkNumericUpDown1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -2106,5 +2213,11 @@ namespace Intersect.Editor.Forms.Editors.Events.Event_Commands
         private DarkCheckBox chkNpc;
         private DarkComboBox cmbNpcs;
         private System.Windows.Forms.Label lblNpc;
+        private DarkGroupBox grpVitalIs;
+        private DarkNumericUpDown darkNumericUpDown1;
+        private DarkComboBox cmbVital;
+        private System.Windows.Forms.Label lblVitalName;
+        private DarkComboBox cmbComparisonOperator;
+        private System.Windows.Forms.Label lblVitalComparisonOperator;
     }
 }

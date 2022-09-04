@@ -175,6 +175,11 @@ namespace Intersect.Editor.Localization
             return EventConditionDesc.levelorstat.ToString(lvlorstat, pLvl);
         }
 
+        public static string GetEventConditionalDesc(VitalIsCondition condition)
+        {
+            return condition.Value.ToString();
+        }
+        
         public static string GetEventConditionalDesc(SelfSwitchCondition condition)
         {
             var sValue = EventConditionDesc.False;
@@ -2305,6 +2310,7 @@ Tick timer saved in server config.json.";
                 {19, @"In Guild With At Least Rank..." },
                 {20, @"Map Zone Type is..." },
                 {21, @"Check Equipped Slot..." },
+                {22, @"Vital is..." }
             };
 
             public static LocalizedString endrange = @"End Range:";
@@ -2346,6 +2352,10 @@ Tick timer saved in server config.json.";
             public static LocalizedString levelstatitem = @"Level or Stat:";
 
             public static LocalizedString levelstatvalue = @"Value:";
+
+            public static LocalizedString vital = @"Vital is...";
+
+            public static LocalizedString vitalvalue = "@Value:";
 
             public static LocalizedString male = @"Male";
 

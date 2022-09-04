@@ -1,4 +1,5 @@
 using System;
+using System.Globalization;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -174,6 +175,25 @@ namespace Intersect.Editor.Forms.Editors.Events.Event_Commands
 
             chkStatIgnoreBuffs.Text = Strings.EventConditional.ignorestatbuffs;
 
+            //Vital is
+            grpVitalIs.Text = Strings.EventConditional.vital;
+            lblVitalName.Text = Strings.EventConditional.vitalvalue;
+            lblVitalComparisonOperator.Text = Strings.EventConditional.comparator;
+
+            cmbVital.Items.Clear();
+            
+            for (var i = 0; i < (int)Vitals.VitalCount; i++)
+            {
+                cmbVital.Items.Add(Strings.Combat.vitals[i]);
+            }
+
+            cmbComparisonOperator.Items.Clear();
+            
+            for (var i = 0; i < Strings.EventConditional.comparators.Count; i++)
+            {
+                cmbComparisonOperator.Items.Add(Strings.EventConditional.comparators[i]);
+            }
+
             //Self Switch Is
             grpSelfSwitch.Text = Strings.EventConditional.selfswitchis;
             lblSelfSwitch.Text = Strings.EventConditional.selfswitch;
@@ -310,6 +330,14 @@ namespace Intersect.Editor.Forms.Editors.Events.Event_Commands
                     chkStatIgnoreBuffs.Checked = false;
 
                     break;
+                
+                case ConditionTypes.VitalIs:
+                    Condition = new VitalIsCondition();
+                    cmbVital.SelectedIndex = 0;
+                    cmbComparisonOperator.SelectedIndex = 0;
+                    darkNumericUpDown1.Value = 0;
+
+                    break;
                 case ConditionTypes.SelfSwitch:
                     Condition = new SelfSwitchCondition();
                     cmbSelfSwitch.SelectedIndex = 0;
@@ -417,6 +445,7 @@ namespace Intersect.Editor.Forms.Editors.Events.Event_Commands
             grpSpell.Hide();
             grpClass.Hide();
             grpLevelStat.Hide();
+            grpVitalIs.Hide();
             grpSelfSwitch.Hide();
             grpPowerIs.Hide();
             grpTime.Hide();
@@ -474,6 +503,10 @@ namespace Intersect.Editor.Forms.Editors.Events.Event_Commands
                     break;
                 case ConditionTypes.LevelOrStat:
                     grpLevelStat.Show();
+
+                    break;
+                case ConditionTypes.VitalIs:
+                    grpVitalIs.Show();
 
                     break;
                 case ConditionTypes.SelfSwitch:
@@ -1216,6 +1249,13 @@ namespace Intersect.Editor.Forms.Editors.Events.Event_Commands
             chkStatIgnoreBuffs.Checked = condition.IgnoreBuffs;
         }
 
+        private void SetupFormValues(VitalIsCondition condition)
+        {
+            cmbVital.SelectedIndex = Convert.ToInt32(condition.Value, CultureInfo.InvariantCulture);
+            cmbComparisonOperator.SelectedIndex = (int)condition.Comparator;
+            darkNumericUpDown1.Value = (int)condition.Value;
+        }
+        
         private void SetupFormValues(SelfSwitchCondition condition)
         {
             cmbSelfSwitch.SelectedIndex = condition.SwitchIndex;
@@ -1414,6 +1454,12 @@ namespace Intersect.Editor.Forms.Editors.Events.Event_Commands
             condition.IgnoreBuffs = chkStatIgnoreBuffs.Checked;
         }
 
+        private void SaveFormValues(VitalIsCondition condition)
+        {
+            condition.Comparator = (VariableComparators)cmbComparisonOperator.SelectedIndex;
+            condition.Value = (Vitals)cmbVital.SelectedIndex;
+        }
+        
         private void SaveFormValues(SelfSwitchCondition condition)
         {
             condition.SwitchIndex = cmbSelfSwitch.SelectedIndex;

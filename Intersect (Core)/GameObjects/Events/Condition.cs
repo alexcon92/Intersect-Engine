@@ -46,6 +46,7 @@ namespace Intersect.GameObjects.Events
 
         CheckEquipment,
 
+        VitalIs
     }
 
     public partial class Condition
@@ -136,6 +137,15 @@ namespace Intersect.GameObjects.Events
 
         public bool IgnoreBuffs { get; set; }
 
+    }
+
+    public partial class VitalIsCondition : Condition
+    {
+        public override ConditionTypes Type { get; } = ConditionTypes.VitalIs;
+        
+        public Vitals Value { get; set; }
+
+        public VariableComparators Comparator { get; set; } = VariableComparators.Equal;
     }
 
     public partial class SelfSwitchCondition : Condition
