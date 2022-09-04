@@ -2353,9 +2353,11 @@ Tick timer saved in server config.json.";
 
             public static LocalizedString levelstatvalue = @"Value:";
 
-            public static LocalizedString vital = @"Vital is...";
+            public static LocalizedString vitalIs = @"Vital is...";
 
-            public static LocalizedString vitalvalue = "@Value:";
+            public static LocalizedString vital = @"Vital:";
+
+            public static LocalizedString vitalvalue = @"Value:";
 
             public static LocalizedString male = @"Male";
 

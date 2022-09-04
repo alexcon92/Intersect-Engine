@@ -176,12 +176,11 @@ namespace Intersect.Editor.Forms.Editors.Events.Event_Commands
             chkStatIgnoreBuffs.Text = Strings.EventConditional.ignorestatbuffs;
 
             //Vital is
-            grpVitalIs.Text = Strings.EventConditional.vital;
-            lblVitalName.Text = Strings.EventConditional.vitalvalue;
-            lblVitalComparisonOperator.Text = Strings.EventConditional.comparator;
+            grpVital.Text = Strings.EventConditional.vitalIs;
+            lblVitalTitle.Text = Strings.EventConditional.vital;
+            lblVitalComparator.Text = Strings.EventConditional.comparator;
+            lblVitalValue.Text = Strings.EventConditional.vitalvalue;
 
-            cmbVital.Items.Clear();
-            
             for (var i = 0; i < (int)Vitals.VitalCount; i++)
             {
                 cmbVital.Items.Add(Strings.Combat.vitals[i]);
@@ -335,7 +334,7 @@ namespace Intersect.Editor.Forms.Editors.Events.Event_Commands
                     Condition = new VitalIsCondition();
                     cmbVital.SelectedIndex = 0;
                     cmbComparisonOperator.SelectedIndex = 0;
-                    darkNumericUpDown1.Value = 0;
+                    nudVitalValue.Value = 0;
 
                     break;
                 case ConditionTypes.SelfSwitch:
@@ -445,7 +444,7 @@ namespace Intersect.Editor.Forms.Editors.Events.Event_Commands
             grpSpell.Hide();
             grpClass.Hide();
             grpLevelStat.Hide();
-            grpVitalIs.Hide();
+            grpVital.Hide();
             grpSelfSwitch.Hide();
             grpPowerIs.Hide();
             grpTime.Hide();
@@ -506,7 +505,7 @@ namespace Intersect.Editor.Forms.Editors.Events.Event_Commands
 
                     break;
                 case ConditionTypes.VitalIs:
-                    grpVitalIs.Show();
+                    grpVital.Show();
 
                     break;
                 case ConditionTypes.SelfSwitch:
@@ -1253,7 +1252,7 @@ namespace Intersect.Editor.Forms.Editors.Events.Event_Commands
         {
             cmbVital.SelectedIndex = Convert.ToInt32(condition.Value, CultureInfo.InvariantCulture);
             cmbComparisonOperator.SelectedIndex = (int)condition.Comparator;
-            darkNumericUpDown1.Value = (int)condition.Value;
+            nudVitalValue.Value = (int)condition.Value;
         }
         
         private void SetupFormValues(SelfSwitchCondition condition)
