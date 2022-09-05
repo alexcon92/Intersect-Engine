@@ -263,6 +263,68 @@ namespace Intersect.Server.Entities.Events
             return false;
         }
 
+        public static bool MeetsCondition(VitalIsCondition condition, Player player, Event eventInstance,
+            QuestBase questBase)
+        {
+
+            if (player == null)
+            {
+                return false;
+            }
+
+            var vital = player.GetVital(condition.Vital);
+
+            switch (condition.Comparator) //Comparator
+            {
+                case VariableComparators.Equal:
+                    if (vital == condition.Value)
+                    {
+                        return true;
+                    }
+
+                    break;
+                case VariableComparators.GreaterOrEqual:
+                    if (vital >= condition.Value)
+                    {
+                        return true;
+                    }
+
+                    break;
+                case VariableComparators.LesserOrEqual:
+                    if (vital <= condition.Value)
+                    {
+                        return true;
+                    }
+
+                    break;
+                case VariableComparators.Greater:
+                    if (vital > condition.Value)
+                    {
+                        return true;
+                    }
+
+                    break;
+                case VariableComparators.Less:
+                    if (vital < condition.Value)
+                    {
+                        return true;
+                    }
+
+                    break;
+                case VariableComparators.NotEqual:
+                    if (vital != condition.Value)
+                    {
+                        return true;
+                    }
+
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
+
+            return false;
+        }
+        
         public static bool MeetsCondition(
             SelfSwitchCondition condition,
             Player player,

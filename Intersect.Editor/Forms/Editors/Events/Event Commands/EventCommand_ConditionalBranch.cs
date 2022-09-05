@@ -1250,7 +1250,7 @@ namespace Intersect.Editor.Forms.Editors.Events.Event_Commands
 
         private void SetupFormValues(VitalIsCondition condition)
         {
-            cmbVital.SelectedIndex = Convert.ToInt32(condition.Value, CultureInfo.InvariantCulture);
+            cmbVital.SelectedIndex = condition.Vital;
             cmbComparisonOperator.SelectedIndex = (int)condition.Comparator;
             nudVitalValue.Value = (int)condition.Value;
         }
@@ -1456,7 +1456,8 @@ namespace Intersect.Editor.Forms.Editors.Events.Event_Commands
         private void SaveFormValues(VitalIsCondition condition)
         {
             condition.Comparator = (VariableComparators)cmbComparisonOperator.SelectedIndex;
-            condition.Value = (Vitals)cmbVital.SelectedIndex;
+            condition.Value = Convert.ToInt32(nudVitalValue.Value);
+            condition.Vital = cmbVital.SelectedIndex;
         }
         
         private void SaveFormValues(SelfSwitchCondition condition)

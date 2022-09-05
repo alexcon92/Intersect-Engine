@@ -143,7 +143,9 @@ namespace Intersect.GameObjects.Events
     {
         public override ConditionTypes Type { get; } = ConditionTypes.VitalIs;
         
-        public Vitals Value { get; set; }
+        public int Vital { get; set; }
+        
+        public int Value { get; set; }
 
         public VariableComparators Comparator { get; set; } = VariableComparators.Equal;
     }
